@@ -4,6 +4,13 @@ End-to-end analytics project on the Rossmann Store Sales dataset (1,115 stores,
 Jan 2013 - Jul 2015, ~1M daily records): SQL data pipeline → time-series demand
 forecast → marketing mix model → Power BI-ready outputs.
 
+## Dashboard
+![Dashboard screenshot](dashboard_screenshot.png)
+
+Three views: weekly sales forecast (actual vs predicted), marketing-driven
+contribution to sales (fitted vs baseline), and channel elasticity showing
+which spend channel actually moves sales.
+
 ## Business problem
 Retail chains need to (1) forecast near-term demand for inventory/staffing
 planning and (2) understand which marketing/promo channels actually drive
