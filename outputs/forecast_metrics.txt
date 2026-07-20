@@ -1,0 +1,3 @@
+Test MAPE: 6.60%
+Test RMSE: 3,407,374
+Test weeks: 12
