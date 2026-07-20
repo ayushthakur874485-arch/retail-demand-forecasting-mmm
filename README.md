@@ -14,15 +14,14 @@ which spend channel actually moves sales.
 ## Business problem
 Retail chains need to (1) forecast near-term demand for inventory/staffing
 planning and (2) understand which marketing/promo channels actually drive
-sales, so spend can be allocated efficiently. This project builds both.
+sales, so spend can be allocated efficiently.
 
 ## Data
 - **Source:** Rossmann Store Sales (Kaggle competition dataset)
 - **Scope:** 1,115 stores, daily sales/customers/promo/holiday flags, 2013-2015
 - **Marketing spend:** No public spend data exists for this dataset. A weekly
   spend-by-channel table (TV / Digital / In-store Promo) was synthetically
-  generated, correlated to real promo activity + trend + noise -- standard
-  practice for portfolio MMM projects when real spend data isn't public.
+  generated, correlated to real promo activity + trend + noise
 
 ## Pipeline
 
@@ -49,26 +48,12 @@ TV/Digital insignificance is driven by multicollinearity -- all three channels
 were constructed as correlated with the same underlying promo signal, so
 in-store promo (strongest single correlate) absorbs most of the explained
 variance. This is flagged in the regression's condition number and is a
-realistic MMM finding worth discussing in interviews.
+realistic MMM finding 
 
-## Outputs (for Power BI)
+## Outputs
 - `outputs/forecast_results.csv` -- actual vs forecast sales, train/test split, confidence bands
 - `outputs/mmm_results.csv` -- actual vs fitted sales, baseline vs spend-driven decomposition
 - `outputs/mmm_elasticities.csv` -- channel elasticity summary table
-
-## Dashboard (Power BI) -- build guide
-1. **Forecast view:** line chart of `actual_sales` vs `forecast_sales` from
-   `forecast_results.csv`, shaded confidence band (`yhat_lower`/`yhat_upper`), filter by train/test.
-2. **Channel contribution view:** waterfall/stacked area from `mmm_results.csv`
-   showing `baseline_sales` vs `fitted_sales` gap = spend-driven lift.
-3. **Elasticity table:** `mmm_elasticities.csv` as a simple KPI card/table --
-   "$X spend increase in [channel] → Y% sales lift."
-
+  
 ## Tech stack
 Python (pandas, Prophet, statsmodels), SQLite (SQL layer), Power BI (dashboard)
-
-## Resume line
-"Built a demand forecasting and marketing mix model on 1M+ retail transaction
-records, achieving 6.6% forecast MAPE and quantifying promotional elasticity
-to inform spend-allocation decisions, with a Power BI dashboard for
-stakeholder reporting."
